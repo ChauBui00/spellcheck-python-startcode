@@ -30,3 +30,10 @@ def loadWordsFromFile(fileName):
 
 # Call main() to begin program
 main()
+
+print("Main Menu")
+print("\n1: Spell Check a Wrod(Linear Search)")
+print("2: Spell Chack a Word(Binary Search)")
+print("3: Spell Check Alice In Wonderland(Linear Search)")
+print("5: Exit")
+input = input("\nEnter memu selection (1-5):")
