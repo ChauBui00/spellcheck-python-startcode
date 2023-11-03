@@ -5,6 +5,13 @@
 
 import re  # Needed for splitting text with a regular expression
 
+def getMenuSelection():
+    print("\nMain Menu")
+    print("1: Spell Check a Wrod(Linear Search)")
+    print("2: Spell Chack a Word(Binary Search)")
+    print("3: Spell Check Alice In Wonderland(Linear Search)")
+    print("5: Exit")
+    return input("\nEnter memu selection (1-5):")
 
 def main():
     # Load data files into lists
@@ -17,6 +24,8 @@ def main():
 
         if selection == "1":
             linearSearchWord(dictionary)
+        elif selection == "2":
+            binarySearch(dictionary)
         elif selection == "5":
             break
 
@@ -33,15 +42,6 @@ def loadWordsFromFile(fileName):
     # Split text by one or more whitespace characters
     return re.split('\s+', textData)
 # end loadWordsFromFile()
-
-
-def getMenuSelection():
-    print("\nMain Menu")
-    print("1: Spell Check a Wrod(Linear Search)")
-    print("2: Spell Chack a Word(Binary Search)")
-    print("3: Spell Check Alice In Wonderland(Linear Search)")
-    print("5: Exit")
-    return input("\nEnter memu selection (1-5):")
 
 
 def linearSearchWord(dictionary):
@@ -64,7 +64,8 @@ def binarySearch(anArray, item):
     # LI = Lower Index
     LI = 0
     UI = len(anArray) - 1
-
+    input_Word = input("Enter a single word: ")
+    index = binarySearch(dictionary, input_Word.lower())
     while LI <= UI:
         # MI = Middle Index
         MI = (LI + UI)//2
