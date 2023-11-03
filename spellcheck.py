@@ -37,3 +37,11 @@ print("2: Spell Chack a Word(Binary Search)")
 print("3: Spell Check Alice In Wonderland(Linear Search)")
 print("5: Exit")
 input = input("\nEnter memu selection (1-5):")
+
+for word in 
+    if input == "1":
+    elif input == "2":
+    elif input == "3":
+    elif input == "4":
+    elif input == "5":
+        break
