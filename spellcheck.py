@@ -25,7 +25,9 @@ def main():
         if selection == "1":
             linearSearchWord(dictionary)
         elif selection == "2":
-            binarySearch(dictionary)
+            binarySearchWord(dictionary)
+        elif selection == "3":
+            linearSearchWord(aliceWords)
         elif selection == "5":
             break
 
@@ -60,12 +62,21 @@ def linearSearch(anArray, item):
             return i
     return -1
 
+def linearSearchWord(aliceWords):
+    count = 0
+    for word in range(len(aliceWords)):
+        index = linearSearch(aliceWords, aliceWords[word])
+        if index == -1:
+            print(f"-{aliceWords[word]}- not found.")
+            count += 1
+        else:
+            print(f"-{aliceWords[word]}- at position {index}")
+
 def binarySearch(anArray, item):
     # LI = Lower Index
     LI = 0
     UI = len(anArray) - 1
-    input_Word = input("Enter a single word: ")
-    index = binarySearch(dictionary, input_Word.lower())
+   
     while LI <= UI:
         # MI = Middle Index
         MI = (LI + UI)//2
@@ -78,7 +89,13 @@ def binarySearch(anArray, item):
                 UI = MI -1
     return -1
 
-
+def binarySearchWord (dictionary):
+    input_Word = input("Enter a single word: ")
+    index = binarySearch(dictionary, input_Word.lower())
+    if index == -1:
+        print(f"-{input_Word}- is not found.")
+    else:
+        print(f"-{input_Word}- is found at position {index}")
 
 # Call main() to begin program
 main()
