@@ -10,6 +10,7 @@ def getMenuSelection():
     print("1: Spell Check a Wrod(Linear Search)")
     print("2: Spell Chack a Word(Binary Search)")
     print("3: Spell Check Alice In Wonderland(Linear Search)")
+    print("4: Spell Check Alice In Wonderland (Binary Search)")
     print("5: Exit")
     return input("\nEnter memu selection (1-5):")
 
@@ -65,13 +66,11 @@ def linearSearch(anArray, item):
 def linearSearchWord(aliceWords):
     count = 0
     for word in range(len(aliceWords)):
-        index = linearSearch(aliceWords, aliceWords[word])
+        index = linearSearch(aliceWords, aliceWords[i])
         if index == -1:
             print(f"-{aliceWords[word]}- not found.")
-            count += 1
-        else:
-            print(f"-{aliceWords[word]}- at position {index}")
-
+        count += 1
+    print(count)
 def binarySearch(anArray, item):
     # LI = Lower Index
     LI = 0
