@@ -30,74 +30,83 @@ def main():
             binarySearchWord(dictionary)
         elif selection == "3":
             linearSearchWord(aliceWords,dictionary)
+        elif selection == "4":
+            binarySearchWord(aliceWords,dictionary)
         elif selection == "5":
             break
 
 
 
 
+ 
+
+def loadWordsFromFile(fileName):
+    # Read file as a string
+    fileref = open(fileName, "r")
+    textData = fileref.read()
+    fileref.close()
+
+    # Split text by one or more whitespace characters
+    return re.split('\s+', textData)
+# end loadWordsFromFile()
 
 
-    def loadWordsFromFile(fileName):
-        # Read file as a string
-        fileref = open(fileName, "r")
-        textData = fileref.read()
-        fileref.close()
+def linearSearchWord(dictionary):
+    # Search the dictionary for a user provided word
+    input_Word = input("Enter a single word: ")
+    index = linearSearch(dictionary, input_Word.lower())
+    if index == -1:
+        print(f"{input_Word} not found.")
+    else:
+        print(f"{input_Word} found at position: {index}")
 
-        # Split text by one or more whitespace characters
-        return re.split('\s+', textData)
-    # end loadWordsFromFile()
 
+def linearSearch(anArray, item):
+    for i in range(len(anArray)):
+        if item == anArray[i]:
+            return i
+    return -1
 
-    def linearSearchWord(dictionary):
-        # Search the dictionary for a user provided word
-        input_Word = input("Enter a single word: ")
-        index = linearSearch(dictionary, input_Word.lower())
+def linearSearchWord(aliceWords,dictionary):
+    count = 0
+    for word in aliceWords:
+        index = linearSearch(dictionary,word.lower())
         if index == -1:
-            print(f"{input_Word} not found.")
-        else:
-            print(f"{input_Word} found at position: {index}")
-
-
-    def linearSearch(anArray, item):
-        for i in range(len(anArray)):
-            if item == anArray[i]:
-                return i
-        return -1
-
-    def linearSearchWord(aliceWords,dictionary):
-        count = 0
-        index = linearSearch(aliceWords.lower(), dictionary)
-        
-        if index == -1:
-            print(f"-{index}- not found.")
             count += 1
-        print(count)
+    print(count)
 
-    def binarySearch(anArray, item):
-        # LI = Lower Index
-        LI = 0
-        UI = len(anArray) - 1
-    
-        while LI <= UI:
-            # MI = Middle Index
-            MI = (LI + UI)//2
-            if item == anArray[MI]:
-                return MI
+def binarySearch(anArray, item):
+    # LI = Lower Index
+    LI = 0
+    UI = len(anArray) - 1
+   
+    while LI <= UI:
+        # MI = Middle Index
+        MI = (LI + UI)//2
+        if item == anArray[MI]:
+            return MI
+        else:
+            if anArray[MI] < item:
+                LI = MI +1
             else:
-                if anArray[MI] < item:
-                    LI = MI +1
-                else:
-                    UI = MI -1
-        return -1
+                UI = MI -1
+    return -1
 
-    def binarySearchWord (dictionary):
-            input_Word = input("Enter a single word: ")
-            index = binarySearch(dictionary, input_Word.lower())
-            if index == -1:
-                print(f"-{input_Word}- is not found.")
-            else:
-                print(f"-{input_Word}- is found at position {index}")
+def binarySearchWord(aliceWords,dictionary):
+    count = 0
+    for word in aliceWords:
+        index = binarySearch(dictionary,word.lower())
+        if index == -1:
+            count += 1
+    print(count)
+
+def binarySearchWord (dictionary):
+        input_Word = input("Enter a single word: ")
+        index = binarySearch(dictionary, input_Word.lower())
+        if index == -1:
+            print(f"-{input_Word}- is not found.")
+        else:
+            print(f"-{input_Word}- is found at position {index}")
 
 
 # end main()
